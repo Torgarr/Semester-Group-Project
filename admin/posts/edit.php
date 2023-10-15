@@ -1,7 +1,8 @@
 <?php
 session_start();
 $file = __DIR__ . '\\..\\..\\data\\posts.json';
-
+$username = 'Placeholder';
+$date = date("m/d/Y");
 // Check if the form is submitted
 if(isset($_POST['submit'])){
     // Read existing JSON data
@@ -10,10 +11,10 @@ if(isset($_POST['submit'])){
 
     // Extract form data
     $edited_member = array(
-        'username' => $_POST['username'],
+        'username' => $username,
         'title' => $_POST['title'],
         'post'  => $_POST['post'],
-        'date'  => $_POST['date']
+        'date'  => $date
     );
 
     // Check if the member with the specified ID exists in the "forum" array
@@ -56,10 +57,10 @@ if(isset($data_array['forum'][$member_id])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Member</title>
+    <title>Edit Post</title>
 </head>
 <body>
-    <h2>Edit Member</h2>
+    <h2>Edit Post</h2>
 
     <?php
     // Display success or error message if available
@@ -70,8 +71,6 @@ if(isset($data_array['forum'][$member_id])){
     ?>
 	
     <form action="<?= $_SERVER['PHP_SELF'] ?>?id=<?= $_GET['id'] ?>" method="post">
-        <label for="inputUserName">Username:</label>
-        <input type="text" name="username" id="inputUserName" value="<?= $current_member['username'] ?>" required>
 
         <label for="inputTitle">Title:</label>
         <input type="text" name="title" id="inputTitle" value="<?= $current_member['title'] ?>" required>
