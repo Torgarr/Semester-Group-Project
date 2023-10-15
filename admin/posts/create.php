@@ -1,6 +1,8 @@
 <?php
 session_start();
 $file = __DIR__ . '\\..\\..\\data\\posts.json';
+$username = 'Placeholder';
+$date = date("m/d/Y");
 // Check if the form is submitted
 if(isset($_POST['submit'])){
     // Read existing JSON data
@@ -9,10 +11,10 @@ if(isset($_POST['submit'])){
 
     // Extract form data
     $new_post = array(
-        'username' => $_POST['username'],
+        'username' => $username,
         'title' => $_POST['title'],
         'post'  => $_POST['post'],
-        'date'  => $_POST['date']
+        'date'  => $date
     );
     if(isset($json_data['forum']) && is_array($json_data['forum'])){
         
@@ -55,8 +57,6 @@ if(isset($_POST['submit'])){
     ?>
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <label for="inputUserName">Username:</label>
-        <input type="text" name="username" id="inputUserName" required>
 
         <label for="inputTitle">Title:</label>
         <input type="text" name="role" id="inputRole" required>
