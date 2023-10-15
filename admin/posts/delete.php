@@ -1,7 +1,8 @@
 <?php
 session_start();
 $file = __DIR__ . '\\..\\..\\data\\posts.json';
-print_r($data_array['forum'][$member_id]);
+print_r($data_array['forum'][$post_id]);
+
 // Check if the form is submitted
 
     // Read existing JSON data
@@ -9,10 +10,10 @@ print_r($data_array['forum'][$member_id]);
     $data_array = json_decode($data, true);
 
     // Check if the member with the specified ID exists in the "forum" array
-    $member_id = $_GET['id'];
-    if(isset($data_array['forum'][$member_id-1])){
+    $post_id = $_GET['id'];
+    if(isset($data_array['forum'][$post_id-1])){
         // Delete the specified user's data
-		unset($data_array['forum'][$member_id - 1]);
+		unset($data_array['forum'][$post_id - 1]);
 
 
         // Convert array to JSON and write to the file
@@ -25,7 +26,7 @@ print_r($data_array['forum'][$member_id]);
     }
 
     // Redirect to avoid form resubmission on page refresh
-    header("Location: {$_SERVER['PHP_SELF']}?id={$member_id}");
+    header("Location: {$_SERVER['PHP_SELF']}?id={$post_id}");
     exit();
 
 
@@ -34,9 +35,9 @@ $data = file_get_contents($file);
 $data_array = json_decode($data, true);
 
 // Get the specified member's values
-$member_id = $_GET['id'];
-if(isset($data_array['forum'][$member_id])){
-    $current_member = $data_array['forum'][$member_id];
+$post_id = $_GET['id'];
+if(isset($data_array['forum'][$post_id])){
+    $current_post = $data_array['forum'][$post_id];
 } else {
     $_SESSION['message'] = 'Invalid member ID';
     header("Location: {$_SERVER['PHP_SELF']}");
