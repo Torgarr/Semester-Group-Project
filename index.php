@@ -27,6 +27,7 @@ require_once('./Authentication/functions.php');
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="./Authentication/signin.php">Sign in</a></li>
                         <li class="nav-item"><a class="nav-link" href="./Authentication/signup.php">Sign up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./Authentication/signout.php">Sign out</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
                     </ul>
                 </div>
