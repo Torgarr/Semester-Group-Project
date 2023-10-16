@@ -28,7 +28,7 @@ function latestPost() {
         <?php
 }
 
-function readJSON() {
+function readPosts() {
     // Read JSON file content
     $json_data = file_get_contents('.\\data\\posts.json');
 
