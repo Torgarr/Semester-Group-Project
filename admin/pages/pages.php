@@ -1,6 +1,6 @@
 <?php
 
-$content = scandir('../../data/HTML/');
+$content = scandir('.\\data\\HTML\\');
 $contents = [];
 foreach ($content as $item){
     if(str_contains($item, '.html')){

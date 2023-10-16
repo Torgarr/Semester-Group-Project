@@ -22,15 +22,12 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-                        
-                        <!-- GET THIS SHIT OUTTA HERE -->
+                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <!-- GET THIS SHIT OUTTA HERE -->
-                        
-                        <li class="nav-item"><a class="nav-link" href="./Authentication/signin.php">Sign In</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Authentication/signup.php">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./Authentication/signin.php">Sign in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./Authentication/signup.php">Sign up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./Authentication/signout.php">Sign out</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,19 +46,11 @@
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
-
-
-                    <!-- Featured blog post, MAKE THIS THE NEWEST ENTRY IN THE FILE -->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title">Featured Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-
+                    <!-- Featured blog post-->
+                        <?php
+                            latestPost()
+                        ?>
+                    
 
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
@@ -70,6 +59,7 @@
                         <?php
                             readJSON()
                         ?>
+                            <!-- Blog post
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
@@ -79,6 +69,8 @@
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
+                            -->
+                            <!-- Blog post
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
@@ -88,36 +80,29 @@
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
+                            -->
                         </div>
-                        <div class="col-lg-6">
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-
                     </div>
+
+                    <!-- Pagination
+                    <nav aria-label="Pagination">
+                        <hr class="my-0" />
+                        <ul class="pagination justify-content-center my-4">
+                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+                        </ul>
+                    </nav>
+                    -->
+
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
-
-
-                    <!-- NO USE FOR THIS RIGHT NOW
+                    <!-- Categories widget
                     <div class="card mb-4">
                         <div class="card-header">Pages</div>
                         <div class="card-body">
@@ -143,8 +128,8 @@
 
                     <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Recent Comments</div>
-                        <div class="card-body"> <!-- PUT 5 MOST RECENT COMMENTs HERE --></div>
+                        <div class="card-header">Side Widget</div>
+                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
                     </div>
                 </div>
             </div>
