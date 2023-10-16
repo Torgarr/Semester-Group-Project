@@ -22,12 +22,15 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+                        
+                        <!-- GET THIS SHIT OUTTA HERE -->
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Authentication/signin.php">Sign in</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Authentication/signup.php">Sign up</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
+                        <!-- GET THIS SHIT OUTTA HERE -->
+                        
+                        <li class="nav-item"><a class="nav-link" href="./Authentication/signin.php">Sign In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./Authentication/signup.php">Sign Up</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,8 +39,8 @@
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+                    <h1 class="fw-bolder">Welcome to The ULTIMATE Gaming Center Home!</h1>
+                    <p class="lead mb-0">Your one-stop shop for all things gaming news!</p>
                 </div>
             </div>
         </header>
@@ -46,7 +49,9 @@
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
-                    <!-- Featured blog post-->
+
+
+                    <!-- Featured blog post, MAKE THIS THE NEWEST ENTRY IN THE FILE -->
                     <div class="card mb-4">
                         <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
                         <div class="card-body">
@@ -56,10 +61,14 @@
                             <a class="btn btn-primary" href="#!">Read more →</a>
                         </div>
                     </div>
+
+
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         <div class="col-lg-6">
-                            <!-- Blog post-->
+
+
+                            <!-- Blog post, MAKE THIS SHIT AN INCRIMENTED LOOP -->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
@@ -102,11 +111,15 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
-                    <!-- Categories widget-->
+
+
+                    <!-- NO USE FOR THIS RIGHT NOW
                     <div class="card mb-4">
                         <div class="card-header">Pages</div>
                         <div class="card-body">
@@ -128,10 +141,12 @@
                             </div>
                         </div>
                     </div>
+                    -->
+
                     <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                        <div class="card-header">Recent Comments</div>
+                        <div class="card-body"> <!-- PUT 5 MOST RECENT COMMENTs HERE --></div>
                     </div>
                 </div>
             </div>
