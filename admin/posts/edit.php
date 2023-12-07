@@ -1,55 +1,30 @@
 <?php
+require_once('posts.php');
 session_start();
-$file = __DIR__ . '\\..\\..\\data\\posts.json';
-$username = 'Placeholder';
+
 $date = date("m/d/Y");
+
 // Check if the form is submitted
 if(isset($_POST['submit'])){
-    // Read existing JSON data
-    $data = file_get_contents($file);
-    $data_array = json_decode($data, true);
-
-    // Extract form data
-    $edited_member = array(
-        'username' => $username,
-        'title' => $_POST['title'],
-        'post'  => $_POST['post'],
-        'date'  => $date
-    );
-
-    // Check if the member with the specified ID exists in the "forum" array
-    $member_id = $_GET['id'] - 1;
-    if(isset($data_array['forum'][$member_id])){
-        // Update the existing member's data
-        $data_array['forum'][$member_id] = $edited_member;
-
-        // Convert array to JSON and write to the file
-        $updated_data = json_encode($data_array, JSON_PRETTY_PRINT);
-        file_put_contents($file, $updated_data);
-
-        $_SESSION['message'] = 'Post successfully edited';
-    } else {
-        $_SESSION['message'] = 'Invalid post ID';
-    }
-
-    // Redirect to avoid form resubmission on page refresh
-    header("Location: {$_SERVER['PHP_SELF']}?id={$member_id}");
+    $postID = $_GET['id'];
+    update_post($pdo, 'UPDATE posts SET Date_Updated = ?, Content = ?, Title = ? WHERE Post_ID = ?', [date("Y-m-d H:i:s"), $_POST['post'], $_POST['title'], $_SESSION["Post_ID"]]);
+    $_SESSION['message'] = 'Post successfully edited';
+    header("Location: {$_SERVER['PHP_SELF']}?id={$postID}");
     exit();
 }
 
-// Read existing JSON data to get current member values
-$data = file_get_contents($file);
-$data_array = json_decode($data, true);
+// Fetch the current post from the database
+$postID = $_GET['id'];
+$current_post = get_post($pdo, 'SELECT * FROM posts WHERE Post_ID = ?', [$_SESSION["Post_ID"]]);
 
-// Get the specified member's values
-$member_id = $_GET['id'] - 1;
-if(isset($data_array['forum'][$member_id])){
-    $current_member = $data_array['forum'][$member_id];
-} else {
+
+
+if (!$current_post) {
     $_SESSION['message'] = 'Invalid post ID';
     header("Location: {$_SERVER['PHP_SELF']}");
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -73,10 +48,10 @@ if(isset($data_array['forum'][$member_id])){
     <form action="<?= $_SERVER['PHP_SELF'] ?>?id=<?= $_GET['id'] ?>" method="post">
 
         <label for="inputTitle">Title:</label>
-        <input type="text" name="title" id="inputTitle" value="<?= $current_member['title'] ?>" required>
+        <input type="text" name="title" id="inputTitle" value="<?= $current_post['Title'] ?>" required>
 
         <label for="inputPost">Post:</label>
-        <textarea name="bio" id="inputPost" required><?= $current_member['post'] ?></textarea>
+        <textarea name="post" id="inputPost" required><?= $current_post['Content'] ?></textarea>
 
         <input type="submit" name="submit" value="Edit Post">
     </form>

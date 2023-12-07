@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 04:09 PM
+-- Generation Time: Dec 07, 2023 at 10:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `gaming_forum`
 --
+CREATE DATABASE IF NOT EXISTS `gaming_forum` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `gaming_forum`;
 
 -- --------------------------------------------------------
 
@@ -31,6 +33,13 @@ CREATE TABLE `company` (
   `Company_ID` int(11) NOT NULL,
   `Company_Name` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`Company_ID`, `Company_Name`) VALUES
+(1, 'test_company');
 
 -- --------------------------------------------------------
 
@@ -67,9 +76,10 @@ CREATE TABLE `genre` (
 CREATE TABLE `posts` (
   `Post_ID` int(11) NOT NULL,
   `User_ID` int(11) NOT NULL,
-  `Date_Created` date NOT NULL,
-  `Date_Updated` date NOT NULL,
-  `Content` varchar(2000) NOT NULL
+  `Date_Created` datetime NOT NULL,
+  `Date_Updated` datetime NOT NULL,
+  `Content` varchar(2000) NOT NULL,
+  `Title` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
