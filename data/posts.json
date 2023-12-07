@@ -17,6 +17,18 @@
             "username": "TechGamer",
             "date": "2023-10-13",
             "post": "Virtual reality (VR) has long been the dream of gamers worldwide, and now, the future is here. Cutting-edge VR technology is reshaping the gaming landscape, providing players with unparalleled immersion and realism. Step into fantastical worlds, interact with lifelike characters, and experience gaming in ways you've never imagined. With VR headsets becoming more accessible, the gaming industry is on the brink of a revolutionary transformation. Get ready to redefine your gaming experience and explore the limitless possibilities of virtual reality."
+        },
+        {
+            "username": "Placeholder",
+            "title": "test title",
+            "post": "test post",
+            "date": "12\/07\/2023"
+        },
+        {
+            "username": "Placeholder",
+            "title": "test2 title",
+            "post": "test title 2",
+            "date": "12\/07\/2023"
         }
     ]
 }
