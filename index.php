@@ -1,5 +1,6 @@
 <?php
     require_once(".\\lib\\json.php");
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +26,21 @@
                         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Authentication/signin.php">Sign in</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Authentication/signup.php">Sign up</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Authentication/signout.php">Sign out</a></li>
+                        <?php
+                        if (isset($_SESSION['email'])){
+                            ?>
+                            <li class="nav-item"><a class="nav-link" href="./Authentication/signout.php">Sign out</a></li>
+                            <?php
+                        }
+                        else{
+                            ?>
+                            <li class="nav-item"><a class="nav-link" href="./Authentication/signin.php">Sign in</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./Authentication/signup.php">Sign up</a></li>
+                            <?php
+                        }
+                        ?>
+                        
+                        
                     </ul>
                 </div>
             </div>
@@ -48,14 +61,14 @@
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                         <?php
-                            latestPost()
+                            latestPost($pdo, 'SELECT * FROM posts ORDER BY Date_Created Desc');
                         ?>
 
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         <div class="col-lg-6">
                             <?php
-                                readPosts()
+                                readPosts($pdo, 'SELECT * FROM posts');
                             ?>
                         </div>
                     </div>
@@ -107,7 +120,7 @@
                         <div class="card-header">User Comments</div>
 
                         <?php
-                            readComments();
+                            readComments($pdo, 'SELECT * FROM comment Join users on comment.User_ID=users.User_ID');
                         ?>
 
                         <div class="card-body"></div>

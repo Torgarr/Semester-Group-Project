@@ -1,76 +1,66 @@
 <?php
 
-function latestPost() {
-    // Read JSON file content
-    $json_data = file_get_contents('.\\data\\posts.json');
+$host='localhost';
+$db='gaming_forum';
+$user='root';
+$pass='';
+$charset='utf8';
+$dsn="mysql:host=$host;dbname=$db;charset=$charset";
+$pdo = new PDO($dsn, $user, $pass);
 
-    // Decode JSON data into PHP array
-    $data = json_decode($json_data, true);
+function latestPost($pdo, $query) {
+    $query=$pdo->prepare($query);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_DEFAULT);
     
-        // Get the last entry from the 'forum' array
-        $latestPost = end($data['forum']);
-
-        $username = $latestPost['username'];
-        $title = $latestPost['title'];
-        $post = $latestPost['post'];
-        $date = $latestPost['date'];
 
         // HTML Output for the latest post
         ?>
         <div class="card mb-4">
             <a href="#!"><img class="card-img-top" src=".\\data\\rabbit.jpg" alt="Default image of a rabbit jumping! <3" /></a>
             <div class="card-body">
-                <div class="small text-muted"><?php echo $date; ?></div>
-                <h2 class="card-title h4"><?php echo $title; ?></h2>
-                <p class="card-text"><?php echo $post; ?></p>
+                <div class="small text-muted"><?php echo $result['Date_Created']; ?></div>
+                <h2 class="card-title h4"><?php echo $result['Title']; ?></h2>
+                <p class="card-text"><?php echo $result['Content']; ?></p>
             </div>
         </div>
         <?php
+       
 }
 
-function readPosts() {
-    // Read JSON file content
-    $json_data = file_get_contents('.\\data\\posts.json');
+function readPosts($pdo, $query) {
+    $query=$pdo->prepare($query);
+    $query->execute();
+    $result = $query->fetchALL(PDO::FETCH_DEFAULT);
 
-    // Decode JSON data into PHP array
-    $data = json_decode($json_data, true);
-
-    foreach ($data['forum'] as $forum) {
-        $username = $forum['username'];
-        $title = $forum['title'];
-        $post = $forum['post'];
-        $date = $forum['date'];
-
-        // HTML Output for each post
-        ?>
-        <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src=".\\data\\rabbit.jpg" alt="Default image of a rabbit jumping! <3" /></a>
-            <div class="card-body">
-                <div class="small text-muted"><?php echo $date; ?></div>
-                <h2 class="card-title h4"><?php echo $title; ?></h2>
-                <p class="card-text"><?php echo $post; ?></p>
-            </div>
+    
+    // HTML Output for each post
+    foreach ($result as $forumPost) {
+    ?>
+    <div class="card mb-4">
+        <a href="#!"><img class="card-img-top" src=".\\data\\rabbit.jpg" alt="Default image of a rabbit jumping! <3" /></a>
+        <div class="card-body">
+            <div class="small text-muted"><?php echo $forumPost['Date_Created']; ?></div>
+            <h2 class="card-title h4"><?php echo $forumPost['Title']; ?></h2>
+            <p class="card-text"><?php echo $forumPost['Content']; ?></p>
         </div>
-        <?php
+    </div>
+    <?php
     }
 }
 
-function readComments() {
-    // Read JSON file content
-    $json_data = file_get_contents('.\\data\\comments.json');
+function readComments($pdo, $query) {
+    $query=$pdo->prepare($query);
+    $query->execute();
+    $result = $query->fetchALL(PDO::FETCH_DEFAULT);
 
-    // Decode JSON data into PHP array
-    $data = json_decode($json_data, true);
-
-    // Loop through comments and print them line by line
-    foreach ($data['comments'] as $comment) {
-        $user = $comment['user'];
-        $commentText = $comment['comment'];
+    
 
         // HTML Output for each comment
+        foreach ($result as $forumPost) {
         ?>
         <div class="card-body">
-            <strong><?php echo $user; ?>:</strong> <?php echo $commentText; ?><br>
+            <strong><?php echo $forumPost['Username']; ?>:</strong> <?php echo $forumPost['Comment']; ?><br>
         </div>
         <?php
     }

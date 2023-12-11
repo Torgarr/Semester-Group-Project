@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $host='localhost';
 $db='gaming_forum';
 $user='root';
@@ -9,24 +7,29 @@ $charset='utf8';
 $dsn="mysql:host=$host;dbname=$db;charset=$charset";
 $pdo = new PDO($dsn, $user, $pass);
 
-function sign_up($pdo, $query, $data){
+function view_all_users($pdo, $query){
+    $query=$pdo->prepare($query);
+    $query->execute();
+    $users = $query->fetchAll(PDO::FETCH_DEFAULT);
+    return $users;
+}
+
+
+
+function update_user($pdo, $query, $data){
     $query = $pdo->prepare($query);
     $query->execute($data);
 }
 
-function sign_in($pdo, $query, $data){
+function get_user($pdo, $query, $data){
     $query = $pdo->prepare($query);
     $query->execute($data);
-    $user = $query->fetch(PDO::FETCH_ASSOC);
-    return $user;
+    $current_user = $query->fetch(PDO::FETCH_ASSOC);
+    return $current_user;
 }
 
-function check_email($pdo, $query, $data){
+function delete_user($pdo, $query, $data){
     $query = $pdo->prepare($query);
     $query->execute($data);
-    $result = $query->rowCount();
-    return $result;
 }
-
-
 ?>
