@@ -11,8 +11,10 @@ if (count($_POST) > 0) {
             // 1. Save the user's data into the session
             $_SESSION['email'] = $user['Email'];
             $_SESSION['ID'] = $user['User_ID'];
+            $_SESSION['role'] = $user['Admin'];
             // 2. Show a welcome message
             echo 'Welcome to our website';
+            header("Location: ../admin/users/detail.php?id=".$_SESSION['ID']);
             $showForm = false;
         }
     }

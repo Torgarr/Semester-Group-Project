@@ -1,8 +1,11 @@
 <?php
 require_once('posts.php');
 session_start();
+// Fetch the current post from the database
+$postID = $_GET['id'];
+$current_post = get_post($pdo, 'SELECT * FROM posts WHERE Post_ID = ?', [$_SESSION["Post_ID"]]);
 
-$date = date("m/d/Y");
+if($_SESSION["role"] != 1 and $_SESSION["ID"] != $current_post['User_ID']) die("You are not permitted here!");
 
 // Check if the form is submitted
 if(isset($_POST['submit'])){
