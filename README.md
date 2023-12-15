@@ -1,2 +1,2 @@
 # Semester-Group-Project
-https://www.youtube.com/watch?v=yvrATcbmQio
+See doc folder for video link and test credentials.
