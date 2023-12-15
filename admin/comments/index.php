@@ -22,6 +22,7 @@
 			$_SESSION["Comment_ID"] = $forumComment['Comment_ID'];
         $index++;
     }
-	echo '<a href="create.php"> <input type="submit" value="Create"/></a>';
+	echo '<a href="create.php"> <input type="submit" value="Create"/></a><br><br>';
+    echo '<a href="../../">Go Home</a></h5>';
 	
 ?>

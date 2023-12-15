@@ -18,10 +18,11 @@ if (count($_POST) > 0) {
             $showForm = false;
         }
     }
+    else echo 'Email and password are missing';
 
     // The credentialas are wrong
     if ($showForm) echo 'Your credentials are wrong';
-} else echo 'Email and password are missing';
+} 
 
 if ($showForm) {
 ?>
