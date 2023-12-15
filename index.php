@@ -24,8 +24,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                         <?php
                         if (isset($_SESSION['email'])){
                             ?>
@@ -39,8 +37,6 @@
                             <?php
                         }
                         ?>
-                        
-                        
                     </ul>
                 </div>
             </div>
@@ -59,62 +55,25 @@
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
-                    <!-- Featured blog post-->
+                    <h1>Here's Our Latest Post!</h1>
+                    <br>
                         <?php
                             latestPost($pdo, 'SELECT * FROM posts ORDER BY Date_Created Desc');
                         ?>
-
-                    <!-- Nested row for non-featured blog posts-->
+                    <hr>
+                    <br>
+                    <h3>All Posts:</h3>
+                    <br>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <?php
                                 readPosts($pdo, 'SELECT * FROM posts');
                             ?>
                         </div>
                     </div>
-
-                    <!-- Pagination
-                    <nav aria-label="Pagination">
-                        <hr class="my-0" />
-                        <ul class="pagination justify-content-center my-4">
-                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-                        </ul>
-                    </nav>
-                    -->
-
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
-                    <!-- Categories widget
-                    <div class="card mb-4">
-                        <div class="card-header">Pages</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-
                     <!-- Side widget-->
                     <div class="card mb-4">
                         <div class="card-header">User Comments</div>
@@ -127,6 +86,12 @@
                     </div>
                 </div>
             </div>
+
+            <a href="./admin/posts/create.php">
+                <button>Create New Post!</button>
+            </a>
+            <hr>
+
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
