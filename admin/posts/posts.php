@@ -19,6 +19,13 @@ Function view_all_posts($pdo, $query){
     return $posts;
 }
 
+Function view_all_comments($pdo, $query){
+    $query=$pdo->prepare($query);
+    $query->execute();
+    $posts = $query->fetchAll(PDO::FETCH_DEFAULT);
+    return $posts;
+}
+
 function update_post($pdo, $query, $data){
     $query = $pdo->prepare($query);
     $query->execute($data);
