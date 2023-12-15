@@ -9,6 +9,7 @@
     foreach ($posts as $forumPost) {
 
         ?>
+        
             <div class="col-lg-3 col-sm-6">
                     <div class="team-box mt-4 position-relative overflow-hidden rounded text-center shadow">
                         <div class="p-4"><?php
@@ -22,6 +23,10 @@
 			$_SESSION["Post_ID"] = $forumPost['Post_ID'];
         $index++;
     }
-	echo '<a href="create.php"> <input type="submit" value="Create"/></a>';
+   
+	echo '<a href="create.php"> <input type="submit" value="Create"/></a><br><br>';
+    echo '<a href="../../">Go Home</a></h5>';
+    
+
 	
 ?>

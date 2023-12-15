@@ -51,3 +51,6 @@
 <a href="../comments/create.php">
   <button>Comment</button>
 </a>
+<a href="../../">
+  <button>Go Home</button>
+</a>

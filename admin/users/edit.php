@@ -38,10 +38,10 @@ if (!$current_user) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Post</title>
+    <title>Edit User</title>
 </head>
 <body>
-    <h2>Edit Post</h2>
+    <h2>Edit User</h2>
 
     <?php
     // Display success or error message if available

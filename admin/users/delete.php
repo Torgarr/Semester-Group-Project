@@ -6,12 +6,12 @@ if($_SESSION["role"] != 1 and $_SESSION["ID"] != $_GET['id']) die("You are not p
 
 // Check if the form is submitted
 if (isset($_POST['submit'])) {
-    // Check if the post with the specified ID exists in the database
+    // Check if the user with the specified ID exists in the database
     $user_id = $_GET['id'];
     $current_user = get_user($pdo, 'SELECT * FROM users WHERE User_ID = ?', [$_SESSION["ID"]]);
 
     if ($current_user) {
-        // Delete the specified post's data
+        // Delete the specified user's data
         delete_user($pdo, 'DELETE FROM users WHERE User_ID = ?', [$_SESSION["ID"]]);
 
         $_SESSION['message'] = 'User successfully deleted';
@@ -31,10 +31,10 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Post</title>
+    <title>Delete User</title>
 </head>
 <body>
-    <h2>Delete Post</h2>
+    <h2>Delete User</h2>
 
     <?php
     // Display success or error message if available
