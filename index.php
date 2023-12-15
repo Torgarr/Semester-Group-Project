@@ -86,6 +86,12 @@
                     </div>
                 </div>
             </div>
+
+            <a href="./admin/posts/create.php">
+                <button>Create New Post!</button>
+            </a>
+            <hr>
+
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
