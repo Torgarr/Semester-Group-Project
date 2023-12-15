@@ -7,7 +7,7 @@ $charset='utf8';
 $dsn="mysql:host=$host;dbname=$db;charset=$charset";
 $pdo = new PDO($dsn, $user, $pass);
 
-function create_post($pdo, $query, $data){
+function create_comment($pdo, $query, $data){
     $query=$pdo->prepare($query);
     $query->execute($data);
 }

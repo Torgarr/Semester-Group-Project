@@ -1,10 +1,7 @@
 <?php
 require_once('posts.php');
 session_start();
-$file = __DIR__ . '\\..\\..\\data\\posts.json';
-$username = 'Placeholder';
-$date = date("m/d/Y");
-// Check if the form is submitted
+
 if(isset($_POST['submit'])){
 
     create_post($pdo, 'INSERT INTO posts (Post_ID, User_ID, Date_Created, Date_Updated, Content, Title) VALUES (?,?,?,?,?,?)', [rand(), $_SESSION['ID'], date("Y-m-d H:i:s"), date("Y-m-d H:i:s"), $_POST['post'], $_POST['title']]);
