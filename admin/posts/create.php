@@ -1,7 +1,7 @@
 <?php
 require_once('posts.php');
 session_start();
-if (!isset($_SESSION['email'])) die('You need to be signed in to create a comment');
+if (!isset($_SESSION['email'])) die('You need to be signed in to create a post');
 
 if(isset($_POST['submit'])){
 
