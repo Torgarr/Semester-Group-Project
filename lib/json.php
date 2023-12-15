@@ -17,7 +17,7 @@ function latestPost($pdo, $query) {
         // HTML Output for the latest post
         ?>
         <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src=".\\data\\rabbit.jpg" alt="Default image of a rabbit jumping! <3" /></a>
+            <a href="./admin/posts/viewer.php?id=<?=$result['Post_ID']?>"><img class="card-img-top" src=".\\data\\rabbit.jpg" alt="Default image of a rabbit jumping! <3" /></a>
             <div class="card-body">
                 <div class="small text-muted"><?php echo $result['Date_Created']; ?></div>
                 <h2 class="card-title h4"><?php echo $result['Title']; ?></h2>
@@ -38,7 +38,7 @@ function readPosts($pdo, $query) {
     foreach ($result as $forumPost) {
     ?>
     <div class="card mb-4">
-        <a href="#!"><img class="card-img-top" src=".\\data\\rabbit.jpg" alt="Default image of a rabbit jumping! <3" /></a>
+        <a href="./admin/posts/viewer.php?id=<?=$forumPost['Post_ID']?>"><img class="card-img-top" src=".\\data\\rabbit.jpg" alt="Default image of a rabbit jumping! <3" /></a>
         <div class="card-body">
             <div class="small text-muted"><?php echo $forumPost['Date_Created']; ?></div>
             <h2 class="card-title h4"><?php echo $forumPost['Title']; ?></h2>
