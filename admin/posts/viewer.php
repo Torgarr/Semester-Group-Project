@@ -1,3 +1,5 @@
+<h1> Post: </h1>
+
 <?php
 	require_once('posts.php');
 	session_start();
@@ -13,39 +15,38 @@
 			$_SESSION["Post_ID"] = $forumPost['Post_ID'];
 			?>
 			
-			<div class="col-lg-3 col-sm-6">
-                    <div class="team-box mt-4 position-relative overflow-hidden rounded text-center shadow">
-                        <div class="p-4"><?php
-                        echo '<div class="p-4">';
-						echo '<h5 class="font-size-19 mb-1">' . $forumPost['Title'] . '</h5>';
-						echo '<h5 class="font-size-19 mb-1">' . $forumPost['Content'] . '</h5>';
-						echo '</div>';
-                        ?></div>
-                    </div>
-                </div>
-				<?php
+			<div class="card mb-4">
+				<div class="card-body">
+				<h2 class="card-title h4"><?php echo $forumPost['Title']; ?></h2>
+				<p class="card-text"><?php echo $forumPost['Content']; ?></p>
+        	</div>
+			<?php
 		}
 	}
+
+	?>
+	
+	<hr>
+	<h2> Comments: </h2>
+	
+	<?php
 
     foreach ($comments as $forumComment) {
 		if($forumComment['Post_ID'] == $item){
 			?>
-			
-			<div class="col-lg-3 col-sm-6">
-                    <div class="team-box mt-4 position-relative overflow-hidden rounded text-center shadow">
-                        <div class="p-4"><?php
-                        echo '<div class="p-4">';
-						echo '<h5 class="font-size-19 mb-1">' . $forumComment['Username'] . '</h5>';
-						echo '<h5 class="font-size-19 mb-1">' . $forumComment['Comment'] . '</h5>';
-						echo '</div>';
-                        ?></div>
-                    </div>
-                </div>
-				<?php
+
+			<div class="card mb-2">
+				<div class="card-body">
+				<h4 class="card-title h4"><?php echo $forumComment['Username']; ?></h4>
+				<p class="card-text"><?php echo $forumComment['Comment']; ?></p>
+        	</div>
+			<?php
 		}
 	}
 
 ?>
+
+<hr><br>
 
 <a href="../comments/create.php">
   <button>Comment</button>
