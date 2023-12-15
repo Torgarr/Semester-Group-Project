@@ -5,10 +5,12 @@
 	$index = 1;
 	$item = $_GET['id'];
     $comments = view_all_comments($pdo, 'SELECT * FROM comment JOIN posts ON comment.Post_ID=posts.Post_ID JOIN users ON users.User_ID=comment.User_ID');
+	
 
 	
 	foreach ($posts as $forumPost) {
 		if($forumPost['Post_ID'] == $item){
+			$_SESSION["Post_ID"] = $forumPost['Post_ID'];
 			?>
 			
 			<div class="col-lg-3 col-sm-6">
@@ -45,6 +47,6 @@
 
 ?>
 
-<a href="https://www.example.com">
-  <button>Click me</button>
+<a href="../comments/create.php">
+  <button>Comment</button>
 </a>
